@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><h1>Home work 7 js</h1></title>
+  </head>
+  <body>
+    <script>
+      // ---- ДЗ ----
+
+      // - Написати функцію `filterBy()`, яка прийматиме 2 аргументи.
+      //   Перший аргумент
+      //  - масив, який міститиме будь-які дані, другий аргумент - тип даних.
+      //  - Функція повинна повернути новий масив, який міститиме всі дані, які були передані в аргумент,
+      //  за винятком тих, тип яких був переданий другим аргументом. Тобто якщо передати
+      //  масив ['hello', 'world', 23, '23', null], і другим аргументом передати 'string',
+      //  то функція поверне масив [23, null].
+
+    
+
+      const filterBy = (arr, type) => arr.filter((arr) => typeof arr !== type);
+
+      console.log(filterBy(["hello", "world", 23, "23", null], "string"));
+
+
+// --------------------------------------------------------------------------------------
+
+    
+      // Задача 2 Переписати гру шибениця з книги на новий синтасис.
+
+      // Создаем массив со словами
+
+      const words = ["дом", "окно", "молоко", "любовь"];
+
+      // Выбираем случайное слово
+
+      let word = words[Math.floor(Math.random() * words.length)];
+
+      // Создаем итоговый массив
+
+      let answerArray = [];
+      for (let i = 0; i < word.length; i++) {
+        answerArray[i] = "_";
+      }
+      let remainingLetters = word.length;
+
+      // Игровой цикл
+
+      while (remainingLetters > 0) {
+        // Показываем состояние игры
+
+        alert(answerArray.join(" "));
+
+        // Запрашиваем вариант ответа
+
+        let guess = prompt(
+          "Угадайте букву, или нажмите Отмена для выхода из игры."
+        );
+        if (guess === null) {
+          // Выходим из игрового цикла
+
+          break;
+        } else if (guess.length !== 1) {
+          alert("Пожалуйста, введите одиночную букву.");
+        } else {
+          // Обновляем состояние игры
+
+          for (let j = 0; j < word.length; j++) {
+            if (word[j] === guess) {
+              answerArray[j] = guess;
+              remainingLetters--;
+            }
+          }
+        }
+        // Конец игрового цикла
+      }
+
+      // Отображаем ответ и поздравляем игрока
+      alert(answerArray.join(" "));
+      alert(`Отлично! Было загадано слово ${word}`);
+    </script>
+  </body>
+</html>
